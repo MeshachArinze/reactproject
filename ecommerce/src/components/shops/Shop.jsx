@@ -2,10 +2,8 @@ import { PropTypes } from "prop-types"
 import Catg from "./Catg"
 import ShopCart from "./ShopCart"
 import "./style.css"
-import Sdata from "./Sdata";
 
-const Shop = ({ addToCart }) => {
-  const shopItems = Sdata.shopItems;
+const Shop = ({ addToCart, shopItems }) => {
   return (
     <>
       <section className='shop background'>
@@ -33,7 +31,8 @@ const Shop = ({ addToCart }) => {
 }
 
 Shop.propTypes = {
-  addToCart: PropTypes.func.isRquired
+  addToCart: PropTypes.any,
+  shopItems: PropTypes.array
 }
 
 export default Shop

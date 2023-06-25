@@ -26,7 +26,7 @@ const SamplePrevArrow = (props) => {
   );
 };
 const FlashCard = ({ productItems, addToCart }) => {
-  console.log(productItems);
+
   const [count, setCount] = useState(0);
   const increment = () => {
     setCount(count + 1);
@@ -45,7 +45,7 @@ const FlashCard = ({ productItems, addToCart }) => {
     <>
       <Slider {...settings}>
         {productItems.map(({ id, discount, cover, name, price }) => {
-          console.log(id, discount, cover, name, price);
+     
           return (
             <div className="box" key={id}>
               <div className="product mtop">

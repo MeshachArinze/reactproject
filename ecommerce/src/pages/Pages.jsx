@@ -25,7 +25,7 @@ const Pages = ({ productItems, addToCart, CartItem, shopItems }) => {
 
 Pages.propTypes = {
   productItems: PropTypes.array,
-  addToCart: PropTypes.func,
+  addToCart: PropTypes.any,
   CartItem: PropTypes.array,
   shopItems: PropTypes.array,
 };
