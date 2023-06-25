@@ -1,6 +1,3 @@
-/* eslint-disable react/no-unknown-property */
-/* eslint-disable no-unused-vars */
-import React from "react"
 import "./style.css"
 
 const Wrapper = () => {
