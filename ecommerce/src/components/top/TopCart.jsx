@@ -18,18 +18,18 @@ const TopCart = () => {
       <Slider {...settings}>
         {Tdata.map(({id, para, desc, cover}) => {
           return (
-            <>
-              <div className='box product' key={id}>
-                <div className='nametop d_flex'>
-                  <span className='tleft'>{para}</span>
-                  <span className='tright'>{desc}</span>
+            <div key={id}>
+              <div className="box product">
+                <div className="nametop d_flex">
+                  <span className="tleft">{para}</span>
+                  <span className="tright">{desc}</span>
                 </div>
-                <div className='img'>
-                  <img src={cover} alt='' />
+                <div className="img">
+                  <img src={cover} alt="" />
                 </div>
               </div>
-            </>
-          )
+            </div>
+          );
         })}
       </Slider>
     </>

@@ -11,22 +11,23 @@ const Dcard = () => {
     slidesToShow: 6,
     slidesToScroll: 1,
     autoplay: true,
+    speed: 500
   }
   return (
     <>
       <Slider {...settings}>
-        {Ddata.map((value, index) => {
+        {Ddata.map(({id, cover, name, price}) => {
           return (
-            <>
-              <div className='box product' key={index}>
-                <div className='img'>
-                  <img src={value.cover} alt='' width='100%' />
+            <div key={id}>
+              <div className="box product">
+                <div className="img">
+                  <img src={cover} alt="" width="100%" />
                 </div>
-                <h4>{value.name}</h4>
-                <span>{value.price}</span>
+                <h4>{name}</h4>
+                <span>{price}</span>
               </div>
-            </>
-          )
+            </div>
+          );
         })}
       </Slider>
     </>

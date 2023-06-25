@@ -47,9 +47,9 @@ const FlashCard = ({ productItems, addToCart }) => {
         {productItems.map(({id, discount, cover, name, price}) => {
           console.log(id, discount, cover, name, price);
           return (
-            <div className='box'>
-              <div className='product mtop' key={id}>
-                <div className='img' >
+            <div className='box' key={id}>
+              <div className='product mtop' >
+                <div className='img'  >
                   <span className='discount'>{discount}% Off</span>
                   <img src={cover} alt='' />
                   <div className='product-like'>

@@ -4,8 +4,10 @@ import React from "react"
 import Catg from "./Catg"
 import ShopCart from "./ShopCart"
 import "./style.css"
+import Sdata from "./Sdata";
 
-const Shop = ({ addToCart, shopItems }) => {
+const Shop = ({ addToCart }) => {
+  const shopItems = Sdata.shopItems;
   return (
     <>
       <section className='shop background'>
