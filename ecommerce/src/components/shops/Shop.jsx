@@ -1,5 +1,4 @@
-/* eslint-disable react/prop-types */
-
+import { PropTypes } from "prop-types"
 import Catg from "./Catg"
 import ShopCart from "./ShopCart"
 import "./style.css"
@@ -31,6 +30,10 @@ const Shop = ({ addToCart }) => {
       </section>
     </>
   )
+}
+
+Shop.propTypes = {
+  addToCart: PropTypes.func.isRquired
 }
 
 export default Shop
