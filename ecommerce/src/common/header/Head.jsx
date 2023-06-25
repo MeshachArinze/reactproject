@@ -1,29 +1,28 @@
-/* eslint-disable no-unused-vars */
-import React from "react"
+import { HeadIcon, HeadLabel, HeadSection } from "./Head.style";
 
 const Head = () => {
   return (
     <>
-      <section className="head">
+      <HeadSection>
         <div className="container d_flex">
           <div className="left row">
-            <i className="fa fa-phone"></i>
-            <label> +88012 3456 7894</label>
-            <i className="fa fa-envelope"></i>
-            <label> support@ui-lib.com</label>
+            <HeadIcon></HeadIcon>
+            <HeadLabel> +2349131083175 </HeadLabel>
+            <HeadIcon></HeadIcon>
+            <HeadLabel> support@ui-lib.com</HeadLabel>
           </div>
           <div className="right row RText">
-            <label>Theme FAQ&quot;s</label>
-            <label>Need Help?</label>
+            <HeadLabel>Theme FAQ&quot;s</HeadLabel>
+            <HeadLabel>Need Help?</HeadLabel>
             <span>🏳️‍⚧️</span>
-            <label>EN</label>
+            <HeadLabel>EN</HeadLabel>
             <span>🏳️‍⚧️</span>
-            <label>USD</label>
+            <HeadLabel>USD</HeadLabel>
           </div>
         </div>
-      </section>
+      </HeadSection>
     </>
   );
-}
+};
 
-export default Head
+export default Head;
