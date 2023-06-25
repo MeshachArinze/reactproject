@@ -1,6 +1,4 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
-import React from "react"
+import { PropTypes } from "prop-types";
 import "./style.css"
 
 const Cart = ({ CartItem, addToCart, decreaseQty }) => {
@@ -69,6 +67,12 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
       </section>
     </>
   )
+}
+
+Cart.propTypes = {
+  CartItem: PropTypes.array.isRequired,
+  addToCart: PropTypes.func.isRequired,
+  decreaseQty: PropTypes.func.isRequired
 }
 
 export default Cart

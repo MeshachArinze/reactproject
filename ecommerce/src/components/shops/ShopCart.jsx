@@ -1,9 +1,5 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-
-import React, { useState } from "react"
-
+import { useState } from "react";
+import { PropTypes} from "prop-types"
 
 const ShopCart = ({ shopItems, addToCart }) => {
   const [count, setCount] = useState(0)
@@ -51,5 +47,10 @@ const ShopCart = ({ shopItems, addToCart }) => {
     </>
   )
 }
+
+ShopCart.propTypes = {
+  shopItems: PropTypes.array,
+  addToCart: PropTypes.func.isRequired
+};
 
 export default ShopCart

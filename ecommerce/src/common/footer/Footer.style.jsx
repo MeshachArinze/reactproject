@@ -1,36 +1,46 @@
-footer {
+import { styled } from "styled-components";
+
+export const Footers = styled.footer`
   background-color: #0f3460;
   padding: 100px 0;
   color: #fff;
-}
-footer h1 {
+`;
+
+export const FooterH1 = styled.h1`
   margin-bottom: 30px;
   color: #e94560;
   font-weight: 800;
   font-style: italic;
-}
-footer .img {
+`;
+
+export const FooterDiv = styled.div`
   background-color: #0c2a4d;
   padding: 15px 20px;
   border-radius: 5px;
-}
-footer .img i {
+`;
+
+export const FooterIcon = styled.i`
   font-size: 20px;
   margin: 5px;
-}
-footer .img span {
+`;
+
+export const FooterSpan = styled.span`
   margin-top: 5px;
-}
-footer p {
+`; 
+
+export const FooterPara = styled.p`
   font-size: 14px;
   font-weight: 300;
   opacity: 0.5;
   margin-bottom: 20px;
-}
-footer h2 {
+`;
+
+
+export const FooterH2 = styled.h2`
   margin-bottom: 20px;
-}
-footer li {
+`;
+
+export const FooterLI = styled.li`
   margin-bottom: 10px;
   opacity: 0.5;
-}
+`;
