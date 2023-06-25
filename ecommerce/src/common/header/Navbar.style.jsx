@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import { styled } from "styled-components";
+import { PropTypes} from "prop-types"
 
 export const Header = styled.header`
   height: 8vh;
@@ -23,3 +23,9 @@ export const StyledLink = styled(Link)`
   font-size: 15px;
   font-weight: 400;
 `;
+
+Link.propTypes = {
+  className: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
+};
+

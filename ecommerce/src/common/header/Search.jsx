@@ -1,6 +1,4 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
-import React from "react"
+import { PropTypes } from "prop-types"
 import logo from "../../components/assets/images/logo.svg"
 import { Link } from "react-router-dom"
 
@@ -40,4 +38,7 @@ const Search = ({ CartItem }) => {
   )
 }
 
+Search.propTypes = {
+  CartItem: PropTypes.array.isRequired
+}
 export default Search

@@ -1,6 +1,4 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-import React from "react"
+import {PropTypes} from "prop-types"
 import "./Header.css"
 import Head from "./Head"
 import Search from "./Search"
@@ -14,6 +12,10 @@ const Header = ({ CartItem }) => {
       <Navbar />
     </>
   )
+}
+
+Header.propTypes = {
+  CartItem: PropTypes.array.isRequired
 }
 
 export default Header
