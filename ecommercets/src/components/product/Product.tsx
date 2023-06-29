@@ -1,7 +1,6 @@
-import React from "react"
 import { product } from "../../assets/data/data"
 import "./product.css"
-import { ProductCart } from "./ProductCart"
+import { ProductCart } from "./product-cart"
 
 export const Product = () => {
   return (

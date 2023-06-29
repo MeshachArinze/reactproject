@@ -1,23 +1,28 @@
-import React from "react"
 import { AiFillTwitterCircle, AiFillLinkedin } from "react-icons/ai"
 import { BsFacebook } from "react-icons/bs"
 import { RiInstagramFill } from "react-icons/ri"
+import FooterChildren from "./footer-children";
 
-export const Footer: () => React.JSX.Element = () => {
+const s ="Cartsy Medicine - All right reserved - Design & Developed by RedQ,Inc" as const;
+let n: typeof s;
+
+export const Footer = () => {
   return (
     <>
       <footer className="boxItems">
         <div className="container flex">
           <p>
-            Cartsy Medicine - All right reserved - Design & Developed by RedQ
-            ,Inc
+            {n}
           </p>
-          <div className="social">
+          <FooterChildren>
+            <div className="social">
             <BsFacebook className="icon" />
             <RiInstagramFill className="icon" />
             <AiFillTwitterCircle className="icon" />
             <AiFillLinkedin className="icon" />
-          </div>
+            </div>
+          </FooterChildren>
+          
         </div>
       </footer>
     </>

@@ -1,4 +1,3 @@
-import React from "react"
 import "./category.css"
 import { GrFormPrevious } from "react-icons/gr"
 import { MdNavigateNext } from "react-icons/md"
@@ -6,38 +5,40 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import { category } from "../../assets/data/data"
 import Slider from "react-slick"
+import { FancyButtonNext } from "./button-next"
+import { FancyButtonPrev } from "./button-prev"
 
-function SampleNextArrow(props: any):React.JSX.Element {
-  const { onClick } = props;
+
+function SampleNextArrow() {
   return (
-    <div className="control-btn" onClick={onClick}>
-      <button className="next">
+    <div className="control-btn">
+      <FancyButtonNext type={"button"}>
         <MdNavigateNext className="icon" />
-      </button>
+      </FancyButtonNext>
     </div>
   );
 }
 
-function SamplePrevArrow(props: any): React.JSX.Element {
-  const { onClick } = props
+
+function SamplePrevArrow() {
   return (
-    <div className='control-btn' onClick={onClick}>
-      <button className='prev'>
-        <GrFormPrevious className='icon' />
-      </button>
+    <div className="control-btn">
+      <FancyButtonPrev type={"button"}>
+        <GrFormPrevious className="icon" />
+      </FancyButtonPrev>
     </div>
-  )
+  );
 }
 
-export const Category: () => React.JSX.Element = () => {
+export const Category = () => {
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 7,
     slidesToScroll: 2,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
+    nextArrow: <SampleNextArrow  />,
+    prevArrow: <SamplePrevArrow  />,
     responsive: [
       {
         breakpoint: 800,
@@ -67,3 +68,4 @@ export const Category: () => React.JSX.Element = () => {
     </>
   );
 };
+
