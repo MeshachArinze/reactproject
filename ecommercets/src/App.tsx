@@ -10,6 +10,7 @@ import { RootState } from "./store";
 import { RootBoundary } from "./error/root-boundary";
 
 const App = () => {
+
   const isLoggIn = useSelector<RootState>((state) => state.auth.isLoggIn);
   const cartItems = useSelector<RootState>((state) => state.cart.itemList);
   console.log(cartItems);

@@ -5,30 +5,29 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import { category } from "../../assets/data/data"
 import Slider from "react-slick"
-import PropTypes from "prop-types"
+import { FancyButtonNext } from "./button-next"
+import { FancyButtonPrev } from "./button-prev"
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function SampleNextArrow(props: { onClick: any }) {
-  const { onClick } = props;
+
+function SampleNextArrow() {
   return (
-    <div className="control-btn" onClick={onClick}>
-      <button className="next">
+    <div className="control-btn">
+      <FancyButtonNext type={"button"}>
         <MdNavigateNext className="icon" />
-      </button>
+      </FancyButtonNext>
     </div>
   );
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function SamplePrevArrow(props: { onClick: any }) {
-  const { onClick } = props
+
+function SamplePrevArrow() {
   return (
-    <div className='control-btn' onClick={onClick}>
-      <button className='prev'>
-        <GrFormPrevious className='icon' />
-      </button>
+    <div className="control-btn">
+      <FancyButtonPrev type={"button"}>
+        <GrFormPrevious className="icon" />
+      </FancyButtonPrev>
     </div>
-  )
+  );
 }
 
 export const Category = () => {
@@ -38,8 +37,8 @@ export const Category = () => {
     speed: 500,
     slidesToShow: 7,
     slidesToScroll: 2,
-    nextArrow: <SampleNextArrow onClick={undefined} />,
-    prevArrow: <SamplePrevArrow onClick={undefined} />,
+    nextArrow: <SampleNextArrow  />,
+    prevArrow: <SamplePrevArrow  />,
     responsive: [
       {
         breakpoint: 800,
@@ -70,10 +69,3 @@ export const Category = () => {
   );
 };
 
-SampleNextArrow.propTypes = {
-  onclic: PropTypes.any
-}
-
-SamplePrevArrow.propsTypes = {
-  onclick: PropTypes.func
-}
