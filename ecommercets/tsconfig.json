@@ -18,7 +18,16 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    /* 
+       Enables emit interoperability between CommonJS and ES Modules 
+       via creation of namespace objects for all imports. 
+       Implies 'allowSyntheticDefaultImports'. 
+    */
+    "esModuleInterop": true,
+
+    
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

@@ -1,16 +1,20 @@
-import React from "react"
 import "./slider.css"
 import { slide } from "../../assets/data/data"
+
+type Item = {
+  id: number,
+  image: string
+}
 
 export const Slider = () => {
   return (
     <>
       <div className='slider'>
         <div className='container grid'>
-          {slide.map((item, i) => (
-            <div className='box' key={i}>
+          {slide.map(({id, image}: Item) => (
+            <div className='box' key={id}>
               <div className='img'>
-                <img src={item.image} alt='' />
+                <img src={image} alt='' />
               </div>
             </div>
           ))}

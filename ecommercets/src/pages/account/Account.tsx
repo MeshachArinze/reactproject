@@ -1,8 +1,16 @@
-import React from "react"
+import { useRef, ReactElement } from "react";
 import image from "../../assets/images/input.png"
 import "./account.css"
 
-export const Account: () => React.JSX.Element = () => {
+export const Account = (): ReactElement => {
+
+  const inputEl = useRef<HTMLInputElement>(null);
+  const onButtonClick = () => {
+ 
+    if(inputEl && inputEl.current) {
+      inputEl.current.focus();
+    }
+  }
   return (
     <>
       <section className="accountInfo">
@@ -17,12 +25,12 @@ export const Account: () => React.JSX.Element = () => {
             </div>
             <div className="right">
               <label>Username</label>
-              <input type="text" required />
-              <label>Email</label>
-              <input type="text" required />
+              <input ref={inputEl} type="text" required />
+              <label >Email</label>
+              <input ref={inputEl} type="text" required />
               <label>Password * </label>
-              <input type="text" required />
-              <button className="button">Update</button>
+              <input ref={inputEl} type="text" required />
+              <button className="button" onClick={onButtonClick}>Update</button>
             </div>
           </div>
         </div>

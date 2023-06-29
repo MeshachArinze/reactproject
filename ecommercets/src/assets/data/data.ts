@@ -2,11 +2,12 @@ import { categoryObjandArray, dataObjandArray, orderObjandArray, productObjandAr
 
 export const slide: dataObjandArray = [
   {
+    id: 1,
     image: "../images/slide/slide1.png",
   },
-  { image: "../images/slide/slide2.png" },
-  { image: "../images/slide/slide3.png" },
-  { image: "../images/slide/slide4.png" },
+  { id: 2, image: "../images/slide/slide2.png" },
+  { id: 3, image: "../images/slide/slide3.png" },
+  { id: 4,image: "../images/slide/slide4.png" },
 ];
 export const order: orderObjandArray = [
   {

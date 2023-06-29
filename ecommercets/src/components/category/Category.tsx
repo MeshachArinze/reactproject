@@ -1,4 +1,3 @@
-import React from "react"
 import "./category.css"
 import { GrFormPrevious } from "react-icons/gr"
 import { MdNavigateNext } from "react-icons/md"
@@ -6,8 +5,10 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import { category } from "../../assets/data/data"
 import Slider from "react-slick"
+import PropTypes from "prop-types"
 
-function SampleNextArrow(props: any):React.JSX.Element {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function SampleNextArrow(props: { onClick: any }) {
   const { onClick } = props;
   return (
     <div className="control-btn" onClick={onClick}>
@@ -18,7 +19,8 @@ function SampleNextArrow(props: any):React.JSX.Element {
   );
 }
 
-function SamplePrevArrow(props: any): React.JSX.Element {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function SamplePrevArrow(props: { onClick: any }) {
   const { onClick } = props
   return (
     <div className='control-btn' onClick={onClick}>
@@ -29,15 +31,15 @@ function SamplePrevArrow(props: any): React.JSX.Element {
   )
 }
 
-export const Category: () => React.JSX.Element = () => {
+export const Category = () => {
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 7,
     slidesToScroll: 2,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
+    nextArrow: <SampleNextArrow onClick={undefined} />,
+    prevArrow: <SamplePrevArrow onClick={undefined} />,
     responsive: [
       {
         breakpoint: 800,
@@ -67,3 +69,11 @@ export const Category: () => React.JSX.Element = () => {
     </>
   );
 };
+
+SampleNextArrow.propTypes = {
+  onclic: PropTypes.any
+}
+
+SamplePrevArrow.propsTypes = {
+  onclick: PropTypes.func
+}

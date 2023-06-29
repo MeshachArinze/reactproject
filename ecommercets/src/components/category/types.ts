@@ -1,4 +1,4 @@
 
-export declare interface AppProps {
+export type AppProps = {
     props:  React.ComponentPropsWithoutRef<"button">
 }

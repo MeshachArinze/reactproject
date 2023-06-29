@@ -1,20 +1,21 @@
-import React from "react"
 import { order } from "../../assets/data/data"
 import "./slider.css"
+
+type myOrder = { id: number; title: string; desc: string };
 
 export const Order = () => {
   return (
     <>
       <section className='order'>
         <div className='container grid boxItems'>
-          {order.map((item) => (
-            <div className='box flexCenter' key={item.id}>
+          {order.map(({id, title, desc}: myOrder) => (
+            <div className='box flexCenter' key={id}>
               <div className='num'>
-                <h1>{item.id}</h1>
+                <h1>{id}</h1>
               </div>
               <div className='text'>
-                <h3>{item.title}</h3>
-                <p>{item.desc}</p>
+                <h3>{title}</h3>
+                <p>{desc}</p>
               </div>
             </div>
           ))}

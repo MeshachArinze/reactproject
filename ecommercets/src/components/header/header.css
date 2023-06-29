@@ -5,6 +5,11 @@ header {
   position: relative;
   z-index: 44;
 }
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
 .search {
   border: 2px solid #212121;
   border-radius: 6px;

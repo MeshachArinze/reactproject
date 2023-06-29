@@ -1,4 +1,3 @@
-import React from "react"
 import Medicine from "../../assets/images/Medicine.svg"
 import "./header.css"
 import { AiOutlineSearch } from "react-icons/ai"
@@ -8,7 +7,7 @@ import { Link } from "react-router-dom"
 
 export const Header = () => {
   window.addEventListener("scroll", function () {
-    const header = this.document.querySelector(".header")
+    const header = this.document.querySelector(".header") as HTMLHeadingElement
     header.classList.toggle("active", this.window.scrollY > 100)
   })
   window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })

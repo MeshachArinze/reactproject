@@ -1,27 +1,29 @@
-import React, { useState } from "react"
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useState } from "react"
 import { BiShoppingBag } from "react-icons/bi"
 import { AiOutlineClose } from "react-icons/ai"
-// import { product } from "../../assets/data/data"
-import { CartItems } from "./CartItems"
+import { CartItems } from "./cart-items"
 import { useSelector } from "react-redux"
+import { RootState } from "../../store"
 
-interface Total {
-  totalPrice: number;
-}
 
-export const Card: () => React.JSX.Element = () => {
-  const [cardOpen, setCardOpen] = useState(false);
+
+export const Card = () => {
+  const [cardOpen, setCardOpen] = useState<boolean>(false);
   const closeCard = () => {
-    setCardOpen(null);
+    setCardOpen(false);
   };
 
-  const quantity = useSelector<[]>((state) => state.cart.totalQuantity);
-  const cartItems = useSelector((state) => state.cart.itemsList);
+  const quantity = useSelector<RootState, number>(
+    (state) => state.cart.totalQuantity
+  );
+  const cartItems = useSelector<RootState, object[]>((state) => state.cart.itemList);
 
   //total
-  let total = 0;
-  const itemsLists = useSelector((state) => state.cart.itemsList);
-  itemsLists.forEach((item: Total) => {
+  let total= 0;
+ 
+  const itemsLists = useSelector<RootState, Array<{totalPrice: number}>>((state) => state.cart.itemList);
+  itemsLists.forEach((item) => {
     total += item.totalPrice;
   });
 
@@ -40,8 +42,9 @@ export const Card: () => React.JSX.Element = () => {
             <AiOutlineClose className="icon" />
           </button>
         </div>
-        {cartItems.map((item: { id: any; cover: any; name: any; price: any; quantity: any; totalPrice: any }) => (
+        {cartItems.map((item: any) => (
           <CartItems
+
             id={item.id}
             cover={item.cover}
             name={item.name}
