@@ -1,4 +1,4 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface MyState {
   itemList: {
@@ -54,15 +54,11 @@ const cartSliceReducer = createSlice({
     removeFromCart: (state, action: PayloadAction<number>) => {
       const id = action.payload;
 
-      const removedItem = state.itemList.find(
-        (item) => item.id === id
-      );
+      const removedItem = state.itemList.find((item) => item.id === id);
 
       if (removedItem) {
         state.totalQuantity -= removedItem.quantity;
-        state.itemList = state.itemList.filter(
-          (item) => item.id !== id
-        );
+        state.itemList = state.itemList.filter((item) => item.id !== id);
       }
     },
     updateItem: (
