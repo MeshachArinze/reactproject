@@ -107,7 +107,7 @@ export const todoSlice = createSlice({
         title: action.payload.title,
         completed: false,
       };
-      state.itemList.concat(todo);
+      state.itemList.push(todo);
     },
     toggleComplete: (state, action) => {
       const index = state.itemList.findIndex(
@@ -126,10 +126,10 @@ export const todoSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getTodosAsync.fulfilled, (state, action) => {
-      state.itemList.concat(action.payload.todos);
+      state.itemList.push(action.payload.todos);
     });
     builder.addCase(addTodoAsync.fulfilled, (state, action) => {
-      state.itemList.concat(action.payload.todo);
+      state.itemList.push(action.payload.todo);
     });
     builder.addCase(toggleCompleAsync.fulfilled, (state, action) => {
       const index = state.itemList.findIndex(
@@ -138,7 +138,13 @@ export const todoSlice = createSlice({
       state.itemList[index].completed = action.payload.todo.completed;
     });
     builder.addCase(deleteTodoAsync.fulfilled, (state, action) => {
-      state.itemList.filter((index) => index.id !== action.payload.id )
+      const index = state.itemList.findIndex(
+        (todo) => todo.id === action.payload.todo.id
+      );
+      if (index > -1) {
+        
+        state.itemList.filter((index) => index.id !== action.payload.id )
+      }
       
     });
     // [getTodosAsync.fulfilled]: (

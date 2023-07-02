@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 const colors = require("colors");
 const cors = require("cors");
 const { json } = require("body-parser");
-const nanoid  = require("nanoid");
+const { importSync } = require("naniod");
 
 dotenv.config({ path: "./config.env" });
 
@@ -14,27 +14,27 @@ app.use(json());
 
 let todos = [
   {
-    id: nanoid(),
+    id: importSync(),
     title: "todo 1",
     completed: true,
   },
   {
-    id: nanoid(),
+    id: importSync(),
     title: "todo 2",
     completed: false,
   },
   {
-    id: nanoid(),
+    id: importSync(),
     title: "todo 3",
     completed: false,
   },
   {
-    id: nanoid(),
+    id: importSync(),
     title: "todo 4",
     completed: false,
   },
   {
-    id: nanoid(),
+    id: importSync(),
     title: "todo 5",
     completed: false,
   },
@@ -43,7 +43,7 @@ let todos = [
 app.get("/todos", (req, res) => res.send(todos));
 
 app.post("/todos", (req, res) => {
-  const todo = { title: req.body.title, id: nanoid(), completed: false };
+  const todo = { title: req.body.title, id: importSync(), completed: false };
   todos.push(todo);
   return res.send(todo);
 });
