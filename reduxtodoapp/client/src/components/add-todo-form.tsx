@@ -1,12 +1,13 @@
-import  { useState } from "react";
+import  { SyntheticEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTodoAsync } from "../redux/todoSlice";
 
 const AddTodoForm = () => {
   const [value, setValue] = useState("");
+  
   const dispatch = useDispatch();
 
-  const onSubmit = (event) => {
+  const onSubmit = (event: SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (value) {
       dispatch(

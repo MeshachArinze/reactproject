@@ -2,10 +2,18 @@ import { useEffect } from "react";
 import TodoItem from "./todo-item";
 import { useSelector, useDispatch } from "react-redux";
 import { getTodosAsync } from "../redux/todoSlice";
+import { RootState } from "../redux/store";
+
+
+type Todo = {
+  id: number,
+  title: string,
+  completed: boolean
+} 
 
 const TodoList = () => {
   const dispatch = useDispatch();
-  const todos = useSelector((state) => state.todos);
+  const todos = useSelector<RootState>((state) => state.todos) as object;
 
   useEffect(() => {
     dispatch(getTodosAsync());
@@ -13,9 +21,9 @@ const TodoList = () => {
 
   return (
     <ul className="list-group">
-      {todos.map((todo) => (
-        <TodoItem id={todo.id} title={todo.title} completed={todo.completed} />
-      ))}
+      {Array.from(Object.values(todos).map((todo:Todo, index) => (
+        <TodoItem key={index}  {...todo} />
+      )))}
     </ul>
   );
 };

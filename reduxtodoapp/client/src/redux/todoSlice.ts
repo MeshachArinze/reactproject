@@ -1,5 +1,16 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { nanoid } from "nanoid";
+
+interface PayloadIdnBoolean {
+  id: string;
+  completed: boolean;
+}
+
+interface PayloadString {
+  title: string;
+}
+
 
 export const getTodosAsync = createAsyncThunk(
   "todos/getTodosAsync",
@@ -10,17 +21,18 @@ export const getTodosAsync = createAsyncThunk(
       return { todos };
     }
   }
-);
+) as any ;
 
 export const addTodoAsync = createAsyncThunk(
   "todos/addTodosAsync",
-  async (payload) => {
+  async (payload: PayloadString) => {
+    const { title } = payload;
     const resp = await fetch("http://localhost:700/todos", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ title: payload.title }),
+      body: JSON.stringify({ title }),
     });
 
     if (resp.ok) {
@@ -28,17 +40,18 @@ export const addTodoAsync = createAsyncThunk(
       return { todo };
     }
   }
-);
+) as any;
 
 export const toggleCompleAsync = createAsyncThunk(
   "todos/completeTodoAsync",
-  async (payload) => {
-    const resp = await fetch(`http://localhost:7000/todos/${payload.id}`, {
+  async (payload: PayloadIdnBoolean) => {
+    const { id, completed } = payload;
+    const resp = await fetch(`http://localhost:7000/todos/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ completed: payload.completed }),
+      body: JSON.stringify({ completed }),
     });
 
     if (resp.ok) {
@@ -46,11 +59,11 @@ export const toggleCompleAsync = createAsyncThunk(
       return { todo };
     }
   }
-);
+) as any;
 
 export const deleteTodoAsync = createAsyncThunk(
   "todos/deleteTodoAsync",
-  async (payload) => {
+  async (payload: { id: string }) => {
     const resp = await fetch(`http://localhost:7000/todos/${payload.id}`, {
       method: "DELETE",
     });
@@ -59,44 +72,102 @@ export const deleteTodoAsync = createAsyncThunk(
       return { id: payload.id };
     }
   }
-);
+) as any;
+
+
+interface MyState {
+  [x: string]: any;
+
+  itemList: {
+    id: number;
+    title: string;
+    completed: boolean;
+  }[];
+}
+
+
+const initialState: MyState = {
+  itemList: [],
+};
 
 export const todoSlice = createSlice({
   name: "todos",
-  initialState: [],
+  initialState,
   reducers: {
-    addTodo: (state, action) => {
+    addTodo: (
+      state,
+      action: PayloadAction<{
+        id: number;
+        title: string;
+        completed: boolean;
+      }>
+    ) => {
       const todo = {
-        id: nanoid(),
+        id: +nanoid(),
         title: action.payload.title,
         completed: false,
       };
-      state.push(todo);
+      state.itemList.concat(todo);
     },
     toggleComplete: (state, action) => {
-      const index = state.findIndex((todo) => todo.id === action.payload.id);
-      state[index].completed = action.payload.completed;
+      const index = state.itemList.findIndex(
+        (todo) => todo.id === action.payload.id
+      );
+      state.itemList[index].completed= action.payload.completed;
     },
     deleteTodo: (state, action) => {
-      return state.filter((todo) => todo.id !== action.payload.id);
+      const index = state.itemList.findIndex(
+        (todo) => todo.id === action.payload.id
+      );
+      if (index) {
+        state.itemList.filter((todo) => todo.id !== action.payload.id);
+      }
     },
   },
-  extraReducers: {
-    [getTodosAsync.fulfilled]: (state, action) => {
-      return action.payload.todos;
-    },
-    [addTodoAsync.fulfilled]: (state, action) => {
-      state.push(action.payload.todo);
-    },
-    [toggleCompleteAsync.fulfilled]: (state, action) => {
-      const index = state.findIndex(
+  extraReducers: (builder) => {
+    builder.addCase(getTodosAsync.fulfilled, (state, action) => {
+      state.itemList.concat(action.payload.todos);
+    });
+    builder.addCase(addTodoAsync.fulfilled, (state, action) => {
+      state.itemList.concat(action.payload.todo);
+    });
+    builder.addCase(toggleCompleAsync.fulfilled, (state, action) => {
+      const index = state.itemList.findIndex(
         (todo) => todo.id === action.payload.todo.id
       );
-      state[index].completed = action.payload.todo.completed;
-    },
-    [deleteTodoAsync.fulfilled]: (state, action) => {
-      return state.filter((todo) => todo.id !== action.payload.id);
-    },
+      state.itemList[index].completed = action.payload.todo.completed as boolean;
+    });
+    builder.addCase(deleteTodoAsync.fulfilled, (state, action) => {
+      state.itemList.filter((index) => index.id !== action.payload?.id )
+      
+    });
+    // [getTodosAsync.fulfilled]: (
+    //   state,
+    //   action
+    // ) => {
+    //   return action.payload.todos;
+    // },
+    // [addTodoAsync.fulfilled]: (
+    //   state,
+    //   action
+    // ) => {
+    //   state.push(action.payload.todo);
+    // },
+    // [toggleCompleAsync.fulfilled]: (
+    //   state,
+    //   action
+    // ) => {
+    // const index = state.itemList.findIndex(
+    //   (todo) => todo.id === action.payload.todo.id
+    // );
+    // state.itemList[index].completed = action.payload.todo.completed;
+    // },
+    // [deleteTodoAsync.fulfilled]: (
+    //   state,
+    //   action
+    // ) => {
+    //   return state.filter((todo) => todo.id !== action.payload.id);
+    // },
   },
 });
 
