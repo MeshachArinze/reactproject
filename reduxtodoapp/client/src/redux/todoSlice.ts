@@ -135,10 +135,10 @@ export const todoSlice = createSlice({
       const index = state.itemList.findIndex(
         (todo) => todo.id === action.payload.todo.id
       );
-      state.itemList[index].completed = action.payload.todo.completed as boolean;
+      state.itemList[index].completed = action.payload.todo.completed;
     });
     builder.addCase(deleteTodoAsync.fulfilled, (state, action) => {
-      state.itemList.filter((index) => index.id !== action.payload?.id )
+      state.itemList.filter((index) => index.id !== action.payload.id )
       
     });
     // [getTodosAsync.fulfilled]: (
